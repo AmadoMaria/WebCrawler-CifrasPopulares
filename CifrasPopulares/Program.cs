@@ -12,15 +12,15 @@ namespace CifrasPopulares
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Vamos Conferir as Cifras do momento!");
-            startCrawlerasync();
+            StartCrawlerasync();
             Console.WriteLine("CrawlerFinalizado");
 
         }
 
-        private static void InsereMusica(Musica musica)
+        private static Musica InsereMusica(Musica musica)
         {
             using (var context = new CifrasContext.CifrasDbContext())
             {
@@ -36,10 +36,11 @@ namespace CifrasPopulares
                 {
                     Console.WriteLine("Algum erro ocorreu!");
                 }
+                return musica;
             }
         }
 
-        private static void InsereRanking(Ranking ranking)
+        private static Ranking InsereRanking(Ranking ranking)
         {
             using (var context = new CifrasContext.CifrasDbContext())
             {
@@ -54,33 +55,32 @@ namespace CifrasPopulares
                 {
                     Console.WriteLine("Algum erro ocorreu!");
                 }
+                return ranking;
             }
         }
 
         private static void InsereRankingMusicas(RankingMusica rankingMusica)
         {
-            using (var context = new CifrasContext.CifrasDbContext())
-            {
-                context.Database.EnsureCreated();
+            using var context = new CifrasContext.CifrasDbContext();
+            context.Database.EnsureCreated();
 
-                try
-                {
-                    context.RankingMusicas.Add(rankingMusica);
-                    context.SaveChanges();
-                }
-                catch
-                {
-                    Console.WriteLine("Algum erro ocorreu!");
-                }
+            try
+            {
+                context.RankingMusicas.Add(rankingMusica);
+                context.SaveChanges();
+            }
+            catch
+            {
+                Console.WriteLine("Algum erro ocorreu!");
             }
         }
 
-        private static async Task startCrawlerasync()
+        private static async Task StartCrawlerasync()
         {
             int cont = 1;
-            var ranking = new Ranking();
-            var rankingMusicas = new RankingMusica();
+            Ranking ranking = new Ranking();
             ranking.data = DateTime.Now;
+            ranking = InsereRanking(ranking);
 
             var url = "https://www.cifraclub.com.br/";
             var client = new WebClient();
@@ -95,6 +95,7 @@ namespace CifrasPopulares
             {
                 var artista = new Artista();
                 var musica = new Musica();
+                var rankingMusicas = new RankingMusica();
 
                 musica.Nome = (span.Descendants("strong")
                     .Where(node => node.GetAttributeValue("class", "").Equals("top-txt_primary")))
@@ -106,12 +107,12 @@ namespace CifrasPopulares
 
                 musica.Artista = artista;
 
-                rankingMusicas.Musica = musica;
-                rankingMusicas.PosicaoMusica = cont;
-                rankingMusicas.Ranking = ranking;
+                musica = InsereMusica(musica);
 
-                InsereMusica(musica);
-                InsereRanking(ranking);
+                rankingMusicas.MusicaID = musica.MusicaID;
+                rankingMusicas.PosicaoMusica = cont;
+                rankingMusicas.RankingID = ranking.RankingID;
+
                 InsereRankingMusicas(rankingMusicas);
 
                 cont ++;

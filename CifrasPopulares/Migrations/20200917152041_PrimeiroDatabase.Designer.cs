@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CifrasPopulares.Migrations
 {
     [DbContext(typeof(CifrasDbContext))]
-    [Migration("20200915200433_PrimeiroDatabase")]
+    [Migration("20200917152041_PrimeiroDatabase")]
     partial class PrimeiroDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,8 +68,7 @@ namespace CifrasPopulares.Migrations
 
             modelBuilder.Entity("CifrasPopulares.Models.RankingMusica", b =>
                 {
-                    b.Property<int>("RankingMusicaID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("RankingID")
                         .HasColumnType("int");
 
                     b.Property<int>("MusicaID")
@@ -78,14 +77,9 @@ namespace CifrasPopulares.Migrations
                     b.Property<int>("PosicaoMusica")
                         .HasColumnType("int");
 
-                    b.Property<int>("RankingID")
-                        .HasColumnType("int");
-
-                    b.HasKey("RankingMusicaID");
+                    b.HasKey("RankingID", "MusicaID");
 
                     b.HasIndex("MusicaID");
-
-                    b.HasIndex("RankingID");
 
                     b.ToTable("RankingMusicas");
                 });
@@ -101,13 +95,13 @@ namespace CifrasPopulares.Migrations
 
             modelBuilder.Entity("CifrasPopulares.Models.RankingMusica", b =>
                 {
-                    b.HasOne("CifrasPopulares.Models.Musica", "Musica")
+                    b.HasOne("CifrasPopulares.Models.Musica", null)
                         .WithMany("RankingMusicas")
                         .HasForeignKey("MusicaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CifrasPopulares.Models.Ranking", "Ranking")
+                    b.HasOne("CifrasPopulares.Models.Ranking", null)
                         .WithMany("RankingMusicas")
                         .HasForeignKey("RankingID")
                         .OnDelete(DeleteBehavior.Cascade)

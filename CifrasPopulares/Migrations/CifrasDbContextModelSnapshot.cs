@@ -66,8 +66,7 @@ namespace CifrasPopulares.Migrations
 
             modelBuilder.Entity("CifrasPopulares.Models.RankingMusica", b =>
                 {
-                    b.Property<int>("RankingMusicaID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("RankingID")
                         .HasColumnType("int");
 
                     b.Property<int>("MusicaID")
@@ -76,14 +75,9 @@ namespace CifrasPopulares.Migrations
                     b.Property<int>("PosicaoMusica")
                         .HasColumnType("int");
 
-                    b.Property<int>("RankingID")
-                        .HasColumnType("int");
-
-                    b.HasKey("RankingMusicaID");
+                    b.HasKey("RankingID", "MusicaID");
 
                     b.HasIndex("MusicaID");
-
-                    b.HasIndex("RankingID");
 
                     b.ToTable("RankingMusicas");
                 });
@@ -99,13 +93,13 @@ namespace CifrasPopulares.Migrations
 
             modelBuilder.Entity("CifrasPopulares.Models.RankingMusica", b =>
                 {
-                    b.HasOne("CifrasPopulares.Models.Musica", "Musica")
+                    b.HasOne("CifrasPopulares.Models.Musica", null)
                         .WithMany("RankingMusicas")
                         .HasForeignKey("MusicaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CifrasPopulares.Models.Ranking", "Ranking")
+                    b.HasOne("CifrasPopulares.Models.Ranking", null)
                         .WithMany("RankingMusicas")
                         .HasForeignKey("RankingID")
                         .OnDelete(DeleteBehavior.Cascade)

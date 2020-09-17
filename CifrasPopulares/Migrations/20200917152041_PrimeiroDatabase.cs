@@ -58,15 +58,13 @@ namespace CifrasPopulares.Migrations
                 name: "RankingMusicas",
                 columns: table => new
                 {
-                    RankingMusicaID = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    PosicaoMusica = table.Column<int>(nullable: false),
                     MusicaID = table.Column<int>(nullable: false),
-                    RankingID = table.Column<int>(nullable: false)
+                    RankingID = table.Column<int>(nullable: false),
+                    PosicaoMusica = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RankingMusicas", x => x.RankingMusicaID);
+                    table.PrimaryKey("PK_RankingMusicas", x => new { x.RankingID, x.MusicaID });
                     table.ForeignKey(
                         name: "FK_RankingMusicas_Musicas_MusicaID",
                         column: x => x.MusicaID,
@@ -90,11 +88,6 @@ namespace CifrasPopulares.Migrations
                 name: "IX_RankingMusicas_MusicaID",
                 table: "RankingMusicas",
                 column: "MusicaID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RankingMusicas_RankingID",
-                table: "RankingMusicas",
-                column: "RankingID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

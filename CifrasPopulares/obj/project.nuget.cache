@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "szoQRbutwJHZpMLmBFzpOJt6gl/+8DSHPLuPVuLQENgO34wqVJB2LegvAin4zOwiwdURmllTeTHv9VvjfSr02A==",
+  "dgSpecHash": "MM7b9bZbCXlUxD26VZ1MuxhiI7q6zwO5p/HGH1yF5AkzohohPyBqCFiDsLNDPgLYRK/kg3PKOcIUNzBi/PpvmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\CifrasPopulares\\CifrasPopulares.csproj",
+  "projectFilePath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\WebCrawler-CifrasPopulares\\CifrasPopulares\\CifrasPopulares.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maria\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\maria\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

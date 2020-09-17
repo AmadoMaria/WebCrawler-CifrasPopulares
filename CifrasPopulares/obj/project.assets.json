@@ -6580,11 +6580,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\CifrasPopulares\\CifrasPopulares.csproj",
+      "projectUniqueName": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\WebCrawler-CifrasPopulares\\CifrasPopulares\\CifrasPopulares.csproj",
       "projectName": "CifrasPopulares",
-      "projectPath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\CifrasPopulares\\CifrasPopulares.csproj",
+      "projectPath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\WebCrawler-CifrasPopulares\\CifrasPopulares\\CifrasPopulares.csproj",
       "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\CifrasPopulares\\obj\\",
+      "outputPath": "C:\\Users\\maria\\Documents\\SENAI\\4º semestre\\LP III\\Web Crawler\\WebCrawler-CifrasPopulares\\CifrasPopulares\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",

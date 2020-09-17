@@ -1,6 +1,6 @@
 ﻿using CifrasPopulares.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Ubiety.Dns.Core.Records.Mail;
 
 namespace CifrasPopulares.CifrasContext
 {
@@ -23,23 +23,17 @@ namespace CifrasPopulares.CifrasContext
 
             
             modelBuilder.Entity<Artista>();
-            modelBuilder.Entity<Ranking>();
+
+           modelBuilder.Entity<Ranking>();
 
             modelBuilder.Entity<Musica>()
-                .HasOne<Artista>(c => c.Artista)
-                .WithMany(f => f.Musicas)
-                .HasForeignKey(c => c.ArtistaID);
+                 .HasOne<Artista>(c => c.Artista)
+                 .WithMany(f => f.Musicas)
+                  .HasForeignKey(c => c.ArtistaID);
 
-            modelBuilder.Entity<RankingMusica>()
-                .HasOne<Musica>(ec => ec.Musica)
-                .WithMany(e => e.RankingMusicas)
-                .HasForeignKey(ec => ec.MusicaID);
+            modelBuilder.Entity<RankingMusica>().HasKey(rm => new { rm.RankingID, rm.MusicaID });
 
-            modelBuilder.Entity<RankingMusica>()
-                .HasOne<Ranking>(ec => ec.Ranking)
-                .WithMany(c => c.RankingMusicas)
-                .HasForeignKey(ec => ec.RankingID);
-
+            
         }
     }
 }
