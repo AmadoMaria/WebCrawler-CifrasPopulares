@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CifrasPopulares.Migrations
 {
     [DbContext(typeof(CifrasDbContext))]
-    [Migration("20200917152041_PrimeiroDatabase")]
+    [Migration("20200918133135_PrimeiroDatabase")]
     partial class PrimeiroDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,9 +26,12 @@ namespace CifrasPopulares.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(767)");
 
                     b.HasKey("ArtistaID");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
 
                     b.ToTable("Artistas");
                 });

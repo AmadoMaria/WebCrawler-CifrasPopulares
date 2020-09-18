@@ -80,6 +80,12 @@ namespace CifrasPopulares.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Artistas_Nome",
+                table: "Artistas",
+                column: "Nome",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Musicas_ArtistaID",
                 table: "Musicas",
                 column: "ArtistaID");

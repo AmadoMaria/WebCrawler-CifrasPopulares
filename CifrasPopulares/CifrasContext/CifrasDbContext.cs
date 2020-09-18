@@ -21,8 +21,10 @@ namespace CifrasPopulares.CifrasContext
         {
             base.OnModelCreating(modelBuilder);
 
-            
-            modelBuilder.Entity<Artista>();
+
+            modelBuilder.Entity<Artista>()
+                 .HasIndex(a => a.Nome)
+                 .IsUnique();
 
            modelBuilder.Entity<Ranking>();
 
@@ -32,7 +34,6 @@ namespace CifrasPopulares.CifrasContext
                   .HasForeignKey(c => c.ArtistaID);
 
             modelBuilder.Entity<RankingMusica>().HasKey(rm => new { rm.RankingID, rm.MusicaID });
-
             
         }
     }

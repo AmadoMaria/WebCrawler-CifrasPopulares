@@ -20,6 +20,46 @@ namespace CifrasPopulares
 
         }
 
+        private static Artista BuscaPorNomeArtista(String nome)
+        {
+            using (var context = new CifrasContext.CifrasDbContext())
+            {
+                context.Database.EnsureCreated();
+                Artista a = new Artista();
+
+                try
+                {
+
+                    a = context.Artistas.Where<Artista>(a => a.Nome == nome).FirstOrDefault();
+                }
+                catch
+                {
+                    Console.WriteLine("Algum erro ocorreu!");
+                }
+                return a;
+            }
+        }
+
+        private static Musica BuscaPorNomeMusica(String nome)
+        {
+            using (var context = new CifrasContext.CifrasDbContext())
+            {
+                context.Database.EnsureCreated();
+                Musica m = new Musica();
+
+                try
+                {
+                   
+                    m = context.Musicas.Where<Musica>(m => m.Nome == nome).FirstOrDefault();
+                }
+                catch
+                {
+                    Console.WriteLine("Algum erro ocorreu!");
+                }
+                return m;
+            }
+        }
+
         private static Musica InsereMusica(Musica musica)
         {
             using (var context = new CifrasContext.CifrasDbContext())
@@ -94,8 +134,12 @@ namespace CifrasPopulares
             foreach (var span in spans)
             {
                 var artista = new Artista();
+                var a = new Artista();
                 var musica = new Musica();
+                var m= new Musica();
                 var rankingMusicas = new RankingMusica();
+                
+             
 
                 musica.Nome = (span.Descendants("strong")
                     .Where(node => node.GetAttributeValue("class", "").Equals("top-txt_primary")))
@@ -105,9 +149,26 @@ namespace CifrasPopulares
                     .Where(node => node.GetAttributeValue("class", "").Equals("top-txt_secondary")))
                     .FirstOrDefault().InnerText;
 
-                musica.Artista = artista;
+                a = BuscaPorNomeArtista(artista.Nome);
+                m = BuscaPorNomeMusica(musica.Nome);
 
-                musica = InsereMusica(musica);
+                if (a == null)
+                {
+                    musica.Artista = artista;
+                }
+                else
+                {
+                    musica.Artista = a;
+                }
+
+                if ( m == null)
+                {
+                    musica = InsereMusica(musica);
+                }
+                else
+                {
+                    musica = m;
+                } 
 
                 rankingMusicas.MusicaID = musica.MusicaID;
                 rankingMusicas.PosicaoMusica = cont;
