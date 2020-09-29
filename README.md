@@ -17,7 +17,7 @@
 - [Desenvolvedores](#desenvolvedores)
 
 ## 🧐 Sobre <a name = "sobre"></a>
-- Um projeto da disciplina de Linguagem de Programação III, com o objetivo de compreender melhor o funcionamento das aplicações Web.
+- Um projeto da disciplina de Linguagem de Programação III, ministrada pelo professor [@marcoslapa](https://github.com/marcoslapa), com o objetivo de compreender melhor o funcionamento das aplicações Web.
 - O WebCrawler armazena em um banco de dados um ranking das músicas, juntamente com o momento em que os dados foram coletados, além disso, são armazenados os artista de cada música. Dessa forma, os dados foram organizados em três entidades: música, artista e ranking.
 
 ## ⛏️ Tecnologias Usadas <a name = "tecnologias-usadas"></a>
@@ -33,4 +33,4 @@ Realize as alterações necessárias no código para adapta-lo ao banco de dados
 
 ## ✍️ Desenvolvedores <a name = "desenvolvedores"></a>
 
-- [@seu-username](https://github.com/seu-username) - Ideia e trabalho inicial
+- [@AmadoMaria](https://github.com/AmadoMaria) - Ideia e trabalho inicial
