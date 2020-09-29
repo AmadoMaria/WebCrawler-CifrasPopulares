@@ -3,7 +3,7 @@
 ---
 
 <p align="center"> - Um WebCrawler que identifica as TOP 15 músicas mais tocas, segundo o site https://www.cifraclub.com.br/, e armazena as informações em um banco de dados relacional.
-- Atividade da disciplina de Linguagem de programação III (SENAI CIMATEC)
+    - Atividade da disciplina de Linguagem de programação III (SENAI CIMATEC)
     <br>
 </p>
 
@@ -23,8 +23,8 @@
 * Entity Framework
 * HtmlAgilityPack
 * System.Net.Http
-* - [MySQL](https://www.mysql.com/) - Banco de Dados
-* - [C#](https://docs.microsoft.com/pt-br/dotnet/csharp/)
+ - [MySQL](https://www.mysql.com/) - Banco de Dados
+ - [C#](https://docs.microsoft.com/pt-br/dotnet/csharp/)
 
 ## 🎈 Como Usar <a name="como-usar"></a>
 
